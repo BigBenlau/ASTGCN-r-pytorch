@@ -48,7 +48,7 @@ def get_sample_indices(data_sequence, num_of_weeks, num_of_days, num_of_hours,
     ----------
     data_sequence: np.ndarray
                    shape is (sequence_length, num_of_vertices, num_of_features)
-    num_of_weeks, num_of_days, num_of_hours: int
+    num_of_weeks, num_of_days, num_of_hours: int, 需要過去的多少組周期
     label_start_idx: int, the first index of predicting target, 预测值开始的那个点
     num_for_predict: int,
                      the number of points will be predicted for each sample
@@ -88,7 +88,6 @@ def get_sample_indices(data_sequence, num_of_weeks, num_of_days, num_of_hours,
                                   24, points_per_hour)
         if not day_indices:
             return None, None, None, None
-
         day_sample = np.concatenate([data_sequence[i: j]
                                      for i, j in day_indices], axis=0)
 
@@ -159,8 +158,7 @@ def read_and_generate_dataset(graph_signal_matrix_filename,
         time_sample = np.expand_dims(np.array([idx]), axis=0)  # (1,1)
         sample.append(time_sample)
 
-        all_samples.append(
-            sample)  # sampe：[(week_sample),(day_sample),(hour_sample),target,time_sample] = [(1,N,F,Tw),(1,N,F,Td),(1,N,F,Th),(1,N,Tpre),(1,1)]
+        all_samples.append(sample)  # sample：[(week_sample),(day_sample),(hour_sample),target,time_sample] = [(1,N,F,Tw),(1,N,F,Td),(1,N,F,Th),(1,N,Tpre),(1,1)]
 
     split_line1 = int(len(all_samples) * 0.6)
     split_line2 = int(len(all_samples) * 0.8)
@@ -300,4 +298,4 @@ graph_signal_matrix_filename = data_config['graph_signal_matrix_filename']
 data = np.load(graph_signal_matrix_filename)
 data['data'].shape
 
-all_data = read_and_generate_dataset(graph_signal_matrix_filename, 0, 0, num_of_hours, num_for_predict, points_per_hour=points_per_hour, save=True)
+all_data = read_and_generate_dataset(graph_signal_matrix_filename, num_of_weeks, num_of_days, num_of_hours, num_for_predict, points_per_hour=points_per_hour, save=True)
