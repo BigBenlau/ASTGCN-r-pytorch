@@ -1,0 +1,22 @@
+Read configuration file: configurations/PEMS08_astgcn.conf
+mean.shape: (1, 1, 3, 1)
+std.shape: (1, 1, 3, 1)
+train x: (10699, 170, 3, 12)
+train target: (10699, 170, 12)
+train timestamp: (10699, 1)
+
+val x: (3567, 170, 3, 12)
+val target: (3567, 170, 12)
+val timestamp: (3567, 1)
+
+test x: (3567, 170, 3, 12)
+test target: (3567, 170, 12)
+test timestamp: (3567, 1)
+
+train data _mean : (1, 1, 3, 1) [[[[2.29858934e+02]
+   [6.43476941e-02]
+   [6.37841954e+01]]]]
+train data _std : (1, 1, 3, 1) [[[[1.45622681e+02]
+   [4.46275336e-02]
+   [6.53075967e+00]]]]
+save file: ./data/PEMS08\PEMS08_r1_d0_w0_astcgn
