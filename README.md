@@ -4,7 +4,7 @@ Attention Based Spatial-Temporal Graph Convolutional Networks for Traffic Flow F
 
 <img src="fig/ASTGCN architecture.png" alt="image-20200103164326338" style="zoom:50%;" />
 
-This is a Pytorch implementation of ASTGCN and MSTCGN. The pytorch version of ASTGCN released here only consists of the  recent component, since the other two components have the same network architecture. 
+This is a Pytorch implementation of ASTGCN and MSTCGN. The pytorch version of ASTGCN released here only consists of the  recent component, since the other two components have the same network architecture.
 
 # Reference
 
@@ -37,9 +37,15 @@ metric_method can choose 'mask', 'unmask'. The metric with a mask does not evalu
 
 The missing_value is the missing identification, whose default value is 0.0
 
+# Environment Setting
+
+```shell
+pip install pipenv
+pipenv shell
+```
 # Datasets
 
-Step 1: Download PEMS04 and PEMS08 datasets provided by [ASTGNN](https://github.com/guoshnBJTU/ASTGNN/tree/main/data). 
+Step 1: Download PEMS04 and PEMS08 datasets provided by [ASTGNN](https://github.com/guoshnBJTU/ASTGNN/tree/main/data).
 
 Step 2: Process dataset
 
@@ -55,8 +61,6 @@ Step 2: Process dataset
   python prepareData.py --config configurations/PEMS08_astgcn.conf
   ```
 
-
-
 # Train and Test
 
 - on PEMS04 dataset
@@ -71,9 +75,11 @@ Step 2: Process dataset
   python train_ASTGCN_r.py --config configurations/PEMS08_astgcn.conf
   ```
 
-  
+# Tool
 
-  
-
+- to check the keys list and the shape of the npz file
+  ```shell
+  python show_data.py --file data/PEMS04/PEMS04.npz
+  ```
 
 
